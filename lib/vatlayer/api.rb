@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Vatlayer
   class Api
     attr_reader :access_key

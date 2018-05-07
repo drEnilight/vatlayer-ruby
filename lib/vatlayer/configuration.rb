@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Configuration
   attr_accessor :access_key
 

@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 require File.expand_path(File.join(File.dirname(__FILE__), 'vatlayer/api'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'vatlayer/configuration'))
 
 module Vatlayer
-  extend self
-  attr_accessor :configuration
+  module_function
 
   def configuration
     @configuration ||= Configuration.new
