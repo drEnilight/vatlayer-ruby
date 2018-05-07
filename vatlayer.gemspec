@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require File.expand_path('../lib/vatlayer/version', __FILE__)
 
 Gem::Specification.new do |spec|
-  spec.name          = 'vatlayer-ruby'
+  spec.name          = 'vatlayer'
   spec.version       = Vatlayer::VERSION
   spec.authors       = ['Vlad Romaniuk']
   spec.email         = ['romanuk_v@live.ru']
