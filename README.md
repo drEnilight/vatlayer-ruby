@@ -35,7 +35,7 @@ You can find your API key in your Vatlayer account, by [reference](https://vatla
 
 ## Configuration
 
-API keys *must* be configured in the gem setup. You can do this anywhere in your application before you make API calls using the gem.
+API keys *must* be configured in the gem setup. You can do this anywhere in your application before you make API calls using the gem. You can find your API key in your Vatlayer account, by [reference](https://vatlayer.com/dashboard). API access is available for every Vatlayer account.
 
 ```ruby
 Vatlayer.configure do |config|
@@ -50,7 +50,53 @@ end
 Please note that the https configuration is optional and only available to paid-accounts. If unset, these configuration-values are just nil.
 
 ## Available methods
-When a method expects a hash as argument, the hash keys have the same name as described in [Vatlayer API documentation](https://vatlayer.com/documentation).
+
+Creating an instance of the Vatlayer client:
+```ruby
+vatlayer = Vatlayer.new('Your API access key')
+```
+If you've configured the gem with a default `access_key`, then you can just instantiate the class.
+```ruby
+vatlayer = Vatlayer.new
+```
+
+#### Validate
+```ruby
+vatlayer.validate('LU26375245')
+
+# <Vatlayer::Response::Data:0x0000555fd334ba10
+#            @valid=true,
+#            @database="ok",
+#            @format_valid=true,
+#            @query="LU26375245",
+#            @country_code="LU",
+#            @vat_number="26375245",
+#            @company_name="AMAZON EUROPE CORE S.A R.L.",
+#            @company_address="5, RUE PLAETIS L-2338  LUXEMBOURG">
+```
+
+#### Rate
+TODO
+
+#### Rate list
+TODO
+
+#### Price
+TODO
+
+### Fetch errors
+
+```ruby
+vatlayer = Vatlayer.new('invalid_access_key')
+vatlayer.validate('LU26375245')
+
+# <Vatlayer::Response::Data:0x0000555fd3379c80
+#            @success=false,
+#            @error=#<Vatlayer::Response::Error:0x0000555fd33797d0
+#                               @code=101,
+#                               @type="invalid_access_key",
+#                               @info="You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]">
+```
 
 
 ## License
