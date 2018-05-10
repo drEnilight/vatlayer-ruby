@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require "pry"
 
 describe Vatlayer::Api do
   describe '#validate' do
@@ -12,7 +13,7 @@ describe Vatlayer::Api do
 
     context 'with valid access_key' do
       let(:access_key) { '9deff624ebf413677b8599f7f6a3df00' }
-      let(:result) { Vatlayer::Response.new(response) }
+      let(:result) { Vatlayer::Response::Data.new(response) }
       let(:response) { Hash['valid', true,
                             'database', 'ok',
                             'format_valid', true,
@@ -23,7 +24,7 @@ describe Vatlayer::Api do
                             'company_address', '5, RUE PLAETIS L-2338  LUXEMBOURG'] }
 
       it 'returns correct data type' do
-        is_expected.to be_a(Vatlayer::Response)
+        is_expected.to be_a(Vatlayer::Response::Data)
       end
 
       it 'returns valid hash keys' do
@@ -35,7 +36,7 @@ describe Vatlayer::Api do
 
     context 'with invalid access_key' do
       let(:access_key) { 'invalid_key' }
-      let(:result) { Vatlayer::Response.new(response) }
+      let(:result) { Vatlayer::Response::Data.new(response) }
       let(:error) { Hash['code', 101,
                          'type', 'invalid_access_key',
                          'info', 'You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]' ] }
@@ -47,7 +48,8 @@ describe Vatlayer::Api do
       end
 
       it 'returns error message' do
-        is_expected.to have_attributes(error: 'invalid_access_key')
+        expect(subject.error).to have_attributes(code: 101, type: 'invalid_access_key',
+                                                 info: 'You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]')
       end
     end
   end

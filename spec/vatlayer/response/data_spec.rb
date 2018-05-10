@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require "pry"
 
-describe Vatlayer::Response do
+describe Vatlayer::Response::Data do
   describe '#new' do
     subject { described_class.new(response) }
 
@@ -40,7 +41,8 @@ describe Vatlayer::Response do
 
       it 'returns object with present errors' do
         is_expected.to have_attributes(success: false)
-        is_expected.to have_attributes(error: 'invalid_access_key')
+        expect(subject.error).to have_attributes(code: 101, type: 'invalid_access_key',
+                                                 info: 'You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]')
       end
     end
   end
