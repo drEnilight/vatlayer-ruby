@@ -4,4 +4,4 @@ rvm:
 
 script:
   - rspec spec/
-  - rubocop
+  - bundle exec rubocop
