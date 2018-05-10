@@ -4,4 +4,4 @@ rvm:
 
 script:
   - rspec spec/
-  - rubocop -c .rubocop.yml
+  - rubocop
