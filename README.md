@@ -1,5 +1,7 @@
 # Vatlayer
 
+[![Build Status](https://travis-ci.org/drEnilight/vatlayer-ruby.svg?branch=master)](https://travis-ci.org/drEnilight/vatlayer-ruby)
+
 The Ruby gem for accessing the Vatlayer API painlessly, easily, and awesomely! This gem is actively being developed. **Be sure to check the branch for the version you're using.**
 
 **Important and helpful links:**
@@ -26,11 +28,10 @@ Or install it yourself as:
 
 ```ruby
 require 'vatlayer'
-teamleader = Teamleader.new('Your API group', 'Your API secret')
+vatlayer = Vatlayer.new('Your API access key')
 
 ```
-You can find your API key in your Teamleader account, under Settings > API & Webhooks. API access is available for every Teamleader account.
-Note that you need to be admin to access this page.
+You can find your API key in your Vatlayer account, by [reference](https://vatlayer.com/dashboard). API access is available for every Vatlayer account.
 
 ## Configuration
 
@@ -44,12 +45,12 @@ end
 ```
 
 * `config.access_key` - your Vatlayer access key
-* `config.https` - your can use https mode, default `false`
+* `config.https` - you can use https mode, default `false`
 
 Please note that the https configuration is optional and only available to paid-accounts. If unset, these configuration-values are just nil.
 
 ## Available methods
-When a method expects a hash as argument, the hash keys have the same name as described in [Teamleader API documentation](http://apidocs.teamleader.be/).
+When a method expects a hash as argument, the hash keys have the same name as described in [Vatlayer API documentation](https://vatlayer.com/documentation).
 
 
 ## License
