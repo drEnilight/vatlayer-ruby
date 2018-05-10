@@ -13,7 +13,7 @@ module Vatlayer
 
     def validate(number)
       params = { vat_number: number }
-      request('/validate', params)
+      Vatlayer::Response.new(request('/validate', params))
     end
 
     private
