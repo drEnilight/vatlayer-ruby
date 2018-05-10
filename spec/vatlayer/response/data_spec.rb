@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
-require "pry"
 
 describe Vatlayer::Response::Data do
   describe '#new' do
