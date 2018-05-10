@@ -2,6 +2,7 @@
 
 require File.expand_path(File.join(File.dirname(__FILE__), 'vatlayer/api'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'vatlayer/configuration'))
+require File.expand_path(File.join(File.dirname(__FILE__), 'vatlayer/response'))
 require File.expand_path(File.join(File.dirname(__FILE__), 'vatlayer/version'))
 
 module Vatlayer
