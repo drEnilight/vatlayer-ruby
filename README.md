@@ -1,6 +1,6 @@
 # Vatlayer
 
-[![Build Status](https://travis-ci.org/drEnilight/vatlayer-ruby.svg?branch=master)](https://travis-ci.org/drEnilight/vatlayer-ruby)
+[![Build Status](https://travis-ci.org/drEnilight/vatlayer-ruby.svg?branch=master)](https://travis-ci.org/drEnilight/vatlayer-ruby) [![codecov.io](https://codecov.io/github/drEnilight/vatlayer-ruby/coverage.svg?branch=master)](https://codecov.io/gh/drEnilight/vatlayer-ruby?branch=master)
 
 The Ruby gem for accessing the Vatlayer API painlessly, easily, and awesomely! This gem is actively being developed. **Be sure to check the branch for the version you're using.**
 
