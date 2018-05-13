@@ -11,6 +11,10 @@ module Vatlayer
       @https = https
     end
 
+    def rate_list
+      request('/rate_list')
+    end
+
     def validate(vat_number:)
       request('/validate', vat_number: vat_number)
     end
@@ -21,7 +25,7 @@ module Vatlayer
       https ? 'https://apilayer.net/api' : 'http://apilayer.net/api'
     end
 
-    def request(path, params)
+    def request(path, params = {})
       response = HTTP.get(api_base_url + path, params: prepared_params(params)).parse
       Vatlayer::Response::Data.new(remove_lb_element(response))
     end
