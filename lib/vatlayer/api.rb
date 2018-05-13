@@ -12,7 +12,7 @@ module Vatlayer
     end
 
     def validate(vat_number:)
-      Vatlayer::Response::Data.new(request('/validate', vat_number: vat_number))
+      request('/validate', vat_number: vat_number)
     end
 
     private
@@ -23,6 +23,10 @@ module Vatlayer
 
     def request(path, params)
       response = HTTP.get(api_base_url + path, params: prepared_params(params)).parse
+      Vatlayer::Response::Data.new(remove_lb_element(response))
+    end
+
+    def remove_lb_element(response)
       response.each_with_object({}) { |(k, v), h| h[k] = v.is_a?(String) ? v.tr("\n", ' ') : v }
     end
 
