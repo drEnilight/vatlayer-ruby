@@ -6,14 +6,9 @@ describe Vatlayer::Response::Data do
   describe '#new' do
     subject { described_class.new(response) }
 
-    context 'with common response' do
-      let(:response) { Hash['valid', true,
-                            'database', 'ok',
-                            'format_valid', true,
-                            'query', 'LU26375245',
-                            'country_code', 'LU',
-                            'vat_number', '26375245',
-                            'company_name', 'AMAZON EUROPE CORE S.A R.L.',
+    context 'with common validate response' do
+      let(:response) { Hash['valid', true, 'database', 'ok', 'format_valid', true, 'query', 'LU26375245',
+                            'country_code', 'LU', 'vat_number', '26375245', 'company_name', 'AMAZON EUROPE CORE S.A R.L.',
                             'company_address', '5, RUE PLAETIS L-2338  LUXEMBOURG'] }
 
        it 'returns object with expected attributes' do
@@ -31,9 +26,21 @@ describe Vatlayer::Response::Data do
        end
     end
 
+    context 'with common rate_list response' do
+      let(:response) { Hash['success', true, 'rates', rates] }
+      let(:rates) { Hash['AT', rate, 'BE', rate ] }
+      let(:rates) { Hash['country_name', 'Austria', 'standard_rate', 20, 'reduced_rates', reduced_rates] }
+      let(:reduced_rates) { Hash['foodstuffs', 10, 'books', 10, 'pharmaceuticals', 10, 'passenger transport', 10,
+                                 'newspapers', 10, 'admission to cultural events', 10,
+                                 'hotels', 10, 'admission to entertainment events', 10] }
+
+      it 'returns object with expected attributes' do
+        # todo
+      end
+    end
+
     context 'with error response' do
-      let(:error) { Hash['code', 101,
-                         'type', 'invalid_access_key',
+      let(:error) { Hash['code', 101, 'type', 'invalid_access_key',
                          'info', 'You have not supplied a valid API Access Key. [Technical Support: support@apilayer.com]' ] }
       let(:response) { Hash['success', false,
                             'error', error] }
