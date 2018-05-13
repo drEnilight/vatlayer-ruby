@@ -62,7 +62,7 @@ vatlayer = Vatlayer.new
 
 #### Validate
 ```ruby
-vatlayer.validate('LU26375245')
+vatlayer.validate(vat_number: 'LU26375245')
 
 # <Vatlayer::Response::Data:0x0000555fd334ba10
 #            @valid=true,

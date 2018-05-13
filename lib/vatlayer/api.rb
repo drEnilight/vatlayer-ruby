@@ -11,9 +11,8 @@ module Vatlayer
       @https = https
     end
 
-    def validate(number)
-      params = { vat_number: number }
-      Vatlayer::Response::Data.new(request('/validate', params))
+    def validate(vat_number:)
+      Vatlayer::Response::Data.new(request('/validate', vat_number: vat_number))
     end
 
     private

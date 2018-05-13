@@ -8,7 +8,7 @@ describe Vatlayer::Api do
 
     before { allow(instance).to receive(:validate).and_return(result) }
 
-    subject { instance.validate('LU26375245') }
+    subject { instance.validate(vat_number: 'LU26375245') }
 
     context 'with valid access_key' do
       let(:access_key) { '9deff624ebf413677b8599f7f6a3df00' }
