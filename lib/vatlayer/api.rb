@@ -27,11 +27,20 @@ module Vatlayer
 
     def request(path, params = {})
       response = HTTP.get(api_base_url + path, params: prepared_params(params)).parse
-      Vatlayer::Response::Data.new(remove_lb_element(response))
+      Vatlayer::Response.const_set('Data', Vatlayer::Response.response_class)
+                        .new(prepare_elements(response))
     end
 
-    def remove_lb_element(response)
-      response.each_with_object({}) { |(k, v), h| h[k.downcase] = v.is_a?(String) ? v.tr("\n", ' ') : v }
+    def prepare_elements(response)
+      response.each_with_object({}) do |(k, v), h|
+        h[k.downcase.split(' ').join('_')] = if v.is_a?(String)
+                                               v.tr("\n", ' ')
+                                             elsif v.is_a?(Hash)
+                                               prepare_elements(v)
+                                             else
+                                               v
+                                             end
+      end
     end
 
     def prepared_params(params)

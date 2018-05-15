@@ -2,26 +2,28 @@
 
 module Vatlayer
   module Response
-    class Data
-      attr_reader :error
+    module_function
 
-      def initialize(attributes)
-        attributes.each do |(key, value)|
-          self.class.class_eval { attr_accessor :"#{key}" }
-          generate_methods(key, value)
+    def response_class
+      Class.new do
+        attr_reader :error
+
+        def initialize(attributes)
+          attributes.each do |(key, value)|
+            self.class.class_eval { attr_accessor :"#{key}" }
+            generate_methods(key, value)
+          end
         end
-      end
 
-      private
+        private
 
-      def generate_methods(key, value)
-        case key
-        when 'error'
-          public_send("#{key}=", Vatlayer::Response::Error.new(value))
-        when 'rates'
-          public_send("#{key}=", Vatlayer::Response::Rates.new(value))
-        else
-          public_send("#{key}=", value)
+        def generate_methods(key, value)
+          if value.is_a?(Hash)
+            Vatlayer::Response.const_set(key.capitalize, Vatlayer::Response.response_class)
+            public_send("#{key}=", eval("Vatlayer::Response::#{key.capitalize}").new(value))
+          else
+            public_send("#{key}=", value)
+          end
         end
       end
     end

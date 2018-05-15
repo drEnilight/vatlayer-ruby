@@ -4,14 +4,13 @@ require 'spec_helper'
 
 describe Vatlayer::Api do
   describe '#rate_list' do
-    let(:instance) { Vatlayer.new(access_key) }
+    let(:instance) { Vatlayer.new() }
 
-    before { allow(instance).to receive(:rate_list).and_return(result) }
+    # before { allow(instance).to receive(:rate_list).and_return(result) }
 
     subject { instance.rate_list }
 
     context 'with valid access_key' do
-      let(:access_key) { '9deff624ebf413677b8599f7f6a3df00' }
       let(:result) { }
 
       it 'returns correct data type' do

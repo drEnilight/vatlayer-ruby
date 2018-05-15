@@ -3,9 +3,9 @@
 require 'spec_helper'
 require "pry"
 
-describe Vatlayer::Response::Data do
+describe 'Vatlayer::Response::Data' do
   describe '#new' do
-    subject { described_class.new(response) }
+    subject { Vatlayer::Response::Data.new(response) }
 
     context 'with common validate response' do
       let(:response) { Hash['valid', true, 'database', 'ok', 'format_valid', true, 'query', 'LU26375245',
