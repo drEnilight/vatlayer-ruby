@@ -31,7 +31,7 @@ module Vatlayer
     end
 
     def remove_lb_element(response)
-      response.each_with_object({}) { |(k, v), h| h[k] = v.is_a?(String) ? v.tr("\n", ' ') : v }
+      response.each_with_object({}) { |(k, v), h| h[k.downcase] = v.is_a?(String) ? v.tr("\n", ' ') : v }
     end
 
     def prepared_params(params)

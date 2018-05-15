@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'spec_helper'
+require "pry"
 
 describe Vatlayer::Response::Data do
   describe '#new' do
@@ -29,13 +30,13 @@ describe Vatlayer::Response::Data do
     context 'with common rate_list response' do
       let(:response) { Hash['success', true, 'rates', rates] }
       let(:rates) { Hash['AT', rate, 'BE', rate ] }
-      let(:rates) { Hash['country_name', 'Austria', 'standard_rate', 20, 'reduced_rates', reduced_rates] }
+      let(:rate) { Hash['country_name', 'Austria', 'standard_rate', 20, 'reduced_rates', reduced_rates] }
       let(:reduced_rates) { Hash['foodstuffs', 10, 'books', 10, 'pharmaceuticals', 10, 'passenger transport', 10,
                                  'newspapers', 10, 'admission to cultural events', 10,
                                  'hotels', 10, 'admission to entertainment events', 10] }
 
       it 'returns object with expected attributes' do
-        # todo
+        # is_expected.to have_attributes(valid: true)
       end
     end
 
