@@ -27,7 +27,7 @@ module Vatlayer
 
     def request(path, params = {})
       response = HTTP.get(api_base_url + path, params: prepared_params(params)).parse
-      Vatlayer::Response.const_set('Data', Vatlayer::Response.response_class)
+      Vatlayer::Response.const_set('Data', Vatlayer::Response.instance_variable_get(:@response_class))
                         .new(prepare_elements(response))
     end
 

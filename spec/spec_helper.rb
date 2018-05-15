@@ -10,6 +10,6 @@ SimpleCov.formatter = SimpleCov::Formatter::Codecov
 
 RSpec.configure do |config|
   config.before(:all) do
-    Vatlayer::Response.const_set('Data', Vatlayer::Response.response_class)
+    Vatlayer::Response.const_set('Data', Vatlayer::Response.instance_variable_get(:@response_class))
   end
 end
