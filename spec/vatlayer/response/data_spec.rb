@@ -28,14 +28,29 @@ describe 'Vatlayer::Response::Data' do
 
     context 'with common rate_list response' do
       let(:response) { Hash['success', true, 'rates', rates] }
-      let(:rates) { Hash['AT', rate, 'BE', rate ] }
+      let(:rates) { Hash['at', rate, 'be', rate ] }
       let(:rate) { Hash['country_name', 'Austria', 'standard_rate', 20, 'reduced_rates', reduced_rates] }
-      let(:reduced_rates) { Hash['foodstuffs', 10, 'books', 10, 'pharmaceuticals', 10, 'passenger transport', 10,
-                                 'newspapers', 10, 'admission to cultural events', 10,
-                                 'hotels', 10, 'admission to entertainment events', 10] }
+      let(:reduced_rates) { Hash['foodstuffs', 10, 'books', 10, 'pharmaceuticals', 10, 'passenger_transport', 10,
+                                 'newspapers', 10, 'admission_to_cultural_events', 10,
+                                 'hotels', 10, 'admission_to_entertainment_events', 10] }
 
       it 'returns object with expected attributes' do
-        # is_expected.to have_attributes(valid: true)
+        is_expected.to have_attributes(success: true)
+      end
+
+      it 'returns rates attributes' do
+        expect(subject.rates.at).to have_attributes(country_name: 'Austria')
+      end
+
+      it 'returns reduced_rates attributes' do
+        expect(subject.rates.at.reduced_rates).to have_attributes(admission_to_cultural_events: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(admission_to_entertainment_events: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(books: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(foodstuffs: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(hotels: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(newspapers: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(passenger_transport: 10)
+        expect(subject.rates.at.reduced_rates).to have_attributes(pharmaceuticals: 10)
       end
     end
 
