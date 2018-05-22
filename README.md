@@ -79,7 +79,25 @@ vatlayer.validate(vat_number: 'LU26375245')
 TODO
 
 #### Rate list
-TODO
+```ruby
+vatlayer.rate_list
+
+# <Vatlayer::Response::Data:0x0000564e0063b308
+#   @rates=#<Vatlayer::Response::Data:0x0000564e00639d78
+#   @at=#<Vatlayer::Response::Data:0x0000564e00638b30
+#     @country_name="Austria",
+#     @reduced_rates=#<Vatlayer::Response::Data:0x0000564e0062e270
+#                     @admission_to_cultural_events=10,
+#                     @admission_to_entertainment_events=10,
+#                     @books=10,
+#                     @foodstuffs=10,
+#                     @hotels=10,
+#                     @newspapers=10,
+#                     @passenger_transport=10,
+#                     @pharmaceuticals=10>,
+#     @standard_rate=20>,
+
+```
 
 #### Price
 TODO
