@@ -118,7 +118,7 @@ vatlayer.validate('LU26375245')
 
 
 ## License
-The Teamleader GEM is released under the MIT License.
+The Vatlayer GEM is released under the MIT License.
 
 ## Contributing
 
