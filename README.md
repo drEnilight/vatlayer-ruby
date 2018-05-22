@@ -95,7 +95,7 @@ vatlayer.rate_list
 #                     @newspapers=10,
 #                     @passenger_transport=10,
 #                     @pharmaceuticals=10>,
-#     @standard_rate=20>,
+#     @standard_rate=20>
 
 ```
 
@@ -118,7 +118,7 @@ vatlayer.validate('LU26375245')
 
 
 ## License
-The Teamleader GEM is released under the MIT License.
+The Vatlayer GEM is released under the MIT License.
 
 ## Contributing
 
