@@ -33,13 +33,13 @@ module Vatlayer
 
     def prepare_elements(response)
       response.each_with_object({}) do |(k, v), h|
-        h[k.downcase.split(' ').join('_')] = if v.is_a?(String)
-                                               v.tr("\n", ' ')
-                                             elsif v.is_a?(Hash)
-                                               prepare_elements(v)
-                                             else
-                                               v
-                                             end
+        h[k.downcase.split(/\s|\-/).join('_')] = if v.is_a?(String)
+                                                   v.tr("\n", ' ')
+                                                 elsif v.is_a?(Hash)
+                                                   prepare_elements(v)
+                                                 else
+                                                   v
+                                                 end
       end
     end
 
