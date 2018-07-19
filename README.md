@@ -119,7 +119,22 @@ vatlayer.rate_list
 ```
 
 #### Price
-TODO
+```ruby
+vatlayer.price(amount: 100, country_code: 'GB', options: { type: 'medical' })
+
+# <Vatlayer::Response::Data:0x00005564aa23e880
+#            @success=true,
+#            @country_code="GB",
+#            @country_name="United Kingdom",
+#            @price_excl_vat=100,
+#            @price_incl_vat=100,
+#            @type="medical",
+#            @vat_rate=0>
+
+```
+
+Also price method takes parameters like `ip_address`, `use_client_ip` and optional parameters `type`, `incl`.
+
 
 ### Fetch errors
 
