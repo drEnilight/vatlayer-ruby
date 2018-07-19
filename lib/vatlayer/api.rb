@@ -11,6 +11,10 @@ module Vatlayer
       @https = https
     end
 
+    def rate(country_code: nil, ip_address: nil, use_client_ip: nil)
+      request('/rate', country_code: country_code, ip_address: ip_address, use_client_ip: use_client_ip)
+    end
+
     def rate_list
       request('/rate_list')
     end

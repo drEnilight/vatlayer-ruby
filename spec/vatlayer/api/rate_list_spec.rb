@@ -29,8 +29,8 @@ describe Vatlayer::Api do
 
       it 'returns reduced_rates attributes' do
         expect(subject.rates.at.reduced_rates).to have_attributes(admission_to_cultural_events: 10, admission_to_entertainment_events: 10,
-                                                                   books: 10, foodstuffs: 10, hotels: 10, newspapers: 10, passenger_transport: 10,
-                                                                   pharmaceuticals: 10)
+                                                                  books: 10, foodstuffs: 10, hotels: 10, newspapers: 10, passenger_transport: 10,
+                                                                  pharmaceuticals: 10)
       end
     end
   end
