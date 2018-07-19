@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drEnilight/vatlayer-ruby.svg?branch=master)](https://travis-ci.org/drEnilight/vatlayer-ruby) [![codecov.io](https://codecov.io/github/drEnilight/vatlayer-ruby/coverage.svg?branch=master)](https://codecov.io/gh/drEnilight/vatlayer-ruby?branch=master)
 
-The Ruby gem for accessing the Vatlayer API painlessly, easily, and awesomely! This gem is actively being developed. **Be sure to check the branch for the version you're using.**
+The Ruby gem for accessing the Vatlayer API painlessly, easily and awesomely! **Be sure to check the branch for the version you're using.**
 
 **Important and helpful links:**
 
@@ -76,7 +76,26 @@ vatlayer.validate(vat_number: 'LU26375245')
 ```
 
 #### Rate
-TODO
+```ruby
+vatlayer.rate(country_code: 'gb')
+
+# <Vatlayer::Response::Data:0x000055c949f35210
+#            @success=true,
+#            @country_code="GB",
+#            @country_name="United Kingdom",
+#            @standard_rate=20,
+#            @reduced_rates=#<Vatlayer::Response::Data:0x000055c949f344f0
+#                            @property_renovations=5,
+#                            @foodstuffs=0,
+#                            @books=0,
+#                            @pharmaceuticals=0,
+#                            @medical=0,
+#                            @passenger_transport=0,
+#                            @newspapers=0,
+#                            @childrens_clothing=0>>
+```
+
+Also rate method takes parameters like `ip_address`, `use_client_ip`.
 
 #### Rate list
 ```ruby
