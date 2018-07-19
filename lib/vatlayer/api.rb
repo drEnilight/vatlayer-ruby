@@ -19,7 +19,7 @@ module Vatlayer
       request('/rate_list')
     end
 
-    def validate(vat_number:)
+    def validate(vat_number: nil)
       request('/validate', vat_number: vat_number)
     end
 
