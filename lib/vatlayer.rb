@@ -16,7 +16,7 @@ module Vatlayer
     yield(configuration)
   end
 
-  def new(access_key = Vatlayer.configuration.access_key, https: Vatlayer.configuration.https)
+  def new(access_key: Vatlayer.configuration.access_key, https: Vatlayer.configuration.https)
     Api.new(access_key, https)
   end
 end
