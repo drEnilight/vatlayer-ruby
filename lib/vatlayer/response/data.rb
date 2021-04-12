@@ -7,8 +7,9 @@ module Vatlayer
 
       def initialize(attributes)
         attributes.each do |(key, value)|
-          self.class.class_eval { attr_accessor :"#{key}" }
-          generate_methods(key, value)
+          cleaned_key = key.gsub(/[^0-9A-Za-z_]/, '')
+          self.class.class_eval { attr_accessor :"#{cleaned_key}" }
+          generate_methods(cleaned_key, value)
         end
       end
 
